@@ -22,11 +22,11 @@
 
 #include "Component.h"
 
-class SampleAddIn final : public Component {
+class WebSocketAddIn final : public Component {
 public:
     const char *Version = u8"1.0.0";
 
-    SampleAddIn();
+    WebSocketAddIn();
 
 private:
     std::string extensionName() override;

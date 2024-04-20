@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
-project(SampleAddIn)
+project(WebSocketAddIn)
 
 set(CMAKE_CXX_STANDARD 17)
-set(TARGET SampleAddIn)
+set(TARGET WebSocketAddIn)
 
 option(CASE_INSENSITIVE "Case insensitive method names" OFF)
 option(STATIC_CRT "Static CRT linkage" OFF)
@@ -15,8 +15,8 @@ list(APPEND SOURCES
         src/exports.cpp
         src/Component.cpp
         src/Component.h
-        src/SampleAddIn.cpp
-        src/SampleAddIn.h)
+        src/WebSocketAddIn.cpp
+        src/WebSocketAddIn.h)
 
 if (ANDROID)
     list(APPEND SOURCES
@@ -41,6 +41,12 @@ endif ()
 
 target_include_directories(${TARGET} PRIVATE
         include)
+
+# see https://cmake.org/cmake/help/latest/module/FindBoost.html
+find_package(Boost REQUIRED)
+
+include_directories(${Boost_INCLUDE_DIR})
+include_directories(${Boost_LIBRARY_DIRS})
 
 if (WIN32 AND NOT MSVC)
     message(FATAL_ERROR "Must be compiled with MSVC on Windows")
