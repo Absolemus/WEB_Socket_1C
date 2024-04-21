@@ -24,8 +24,7 @@ if (ANDROID)
             src/jnienv.h)
 endif ()
 
-add_library(${TARGET} SHARED
-        ${SOURCES})
+add_library(${TARGET} SHARED ${SOURCES})
 
 target_compile_definitions(${TARGET} PRIVATE
         UNICODE

@@ -25,25 +25,15 @@
 class WebSocketAddIn final : public Component {
 public:
     const char *Version = u8"1.0.0";
-
     WebSocketAddIn();
-
 private:
     std::string extensionName() override;
-
-    variant_t add(const variant_t &a, const variant_t &b);
-
-    void message(const variant_t &msg);
-
-    void sleep(const variant_t &delay);
-
-    void assign(variant_t &out);
-
-    variant_t samplePropertyValue();
-
-    variant_t currentDate();
-
-    std::shared_ptr<variant_t> sample_property;
+    std::shared_ptr<variant_t> host;
+    std::shared_ptr<variant_t> port;
+    std::shared_ptr<variant_t> path;
+    void addMethods();
+    void addProperties();
+    variant_t run();
 };
 
 #endif //SAMPLEADDIN_H
